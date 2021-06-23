@@ -20,6 +20,7 @@ export function AuthContextProvieder(props: AuthContextProvieder) {
 
   const [ user, setUser] = useState<User>();
 
+//Recuperando o estado do usuário quando ele recarrega a página
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if(user) {
