@@ -1,7 +1,7 @@
-import copyImg from '../assets/images/copy.svg';
+import copyImg from '../../assets/images/copy.svg';
 
 import { useState } from 'react';
-import '../styles/roomCode.scss';
+import '../Room/styles.scss';
 
 type RoomCodeProps = {
   code: string,
@@ -19,7 +19,7 @@ export function RoomCode(props: RoomCodeProps) {
         <img src={copyImg} alt="Copy room code" />
       </div>
       {isCopied ?
-        (<span className="code-copied">Code copied successfully!</span>) :
+        (<span className="">Code copied successfully!</span>) :
         (<span>Sala {props.code}</span>)
       }
     </button>

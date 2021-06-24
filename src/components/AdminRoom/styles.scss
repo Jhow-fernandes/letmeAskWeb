@@ -13,6 +13,16 @@
       > img {
         max-height: 45px;
       }
+
+      > div {
+        display: flex;
+        gap: 16px; // ess propridade gap só sera aplica de tiver dois elementos um ao lado do outro.
+
+        button {
+          height:40px;
+        }
+      }
+
     }
   }
 
@@ -95,6 +105,9 @@
           }
         }
       }
+    }
+    .question-list{
+      margin-top:32px;
     }
   }
 }

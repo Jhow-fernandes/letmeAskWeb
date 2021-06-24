@@ -1,14 +1,15 @@
 import  { FormEvent, useState } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 
-import illutrationImg from '../assets/images/illustration.svg';
-import logoImg from '../assets/images/logo.svg';
+import illustrationImg from '../../assets/images/illustration.svg';
 
-import { Button } from '../components/Button';
-import { database } from '../service/fibrebase';
-import { useAuth } from '../hooks/useAuth';
+import logoImg from '../../assets/images/logo.svg';
 
-import '../styles/auth.scss';
+import { Button } from '../Button';
+import { database } from '../../service/firebase';
+import { useAuth } from '../../hooks/useAuth';
+
+import './styles.scss';
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -23,12 +24,12 @@ export function NewRoom() {
     }
     const roomRef = database.ref('rooms');
 
-    const fibrebaseRoom = await roomRef.push({
+    const firebaseRoom = await roomRef.push({
       title: newRoom,
       authorId: user?.id
     });
 
-    history.push(`/room/${fibrebaseRoom.key}`);
+    history.push(`/rooms/${firebaseRoom.key}`);
 
 
   }
@@ -36,7 +37,7 @@ export function NewRoom() {
   return (
     <div id="page-auth">
       <aside>
-        <img src={ illutrationImg } alt="ilustração Simbolizando Perguntas e respostas" />
+        <img src={illustrationImg} alt="ilustração Simbolizando Perguntas e respostas" />
         <strong>Crie salas de Q&amp;A ao-vivo</strong>
         <p>Tire as duvidas da sua audiência em tempo real</p>
       </aside>

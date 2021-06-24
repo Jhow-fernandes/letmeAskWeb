@@ -2,26 +2,26 @@ import { useHistory } from 'react-router-dom';
 
 import { FormEvent, useState } from 'react';
 
-import illutrationImg from '../assets/images/illustration.svg';
-import logoImg from '../assets/images/logo.svg';
-import googleIcon from '../assets/images/google-icon.svg';
+import illutrationImg from '../../assets/images/illustration.svg';
+import logoImg from '../../assets/images/logo.svg';
+import googleIcon from '../../assets/images/google-icon.svg';
 
-import {database} from '../service/fibrebase';
+import {database} from '../../service/firebase';
 
-import { Button } from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
+import { Button } from '../Button';
+import { useAuth } from '../../hooks/useAuth';
 
-import '../styles/auth.scss';
+import './styles.scss';
 
 export function Home() {
   const history = useHistory();
-  const { user, signWithGoogle } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const [roomCode, setRoomCode] = useState('');
 
   //NAVEGAÇÃO ENTRE AS PAGINAS
   async function handleCreateRoom(){
     if(!user) {
-      await signWithGoogle();
+      await signInWithGoogle();
     }
     history.push('/rooms/new');
   }
@@ -39,8 +39,12 @@ export function Home() {
       alert('Room does not exists');
       return;
     }
+    if(roomRef.val().endedAt){
+      alert('Room already closed');
+      return;
+    }
 
-    history.push(`/room/${roomCode}`);
+    history.push(`/rooms/${roomCode}`);
   }
   return (
     <div id="page-auth">
