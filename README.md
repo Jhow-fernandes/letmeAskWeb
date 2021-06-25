@@ -6,7 +6,7 @@
 </h4>  
 
 <p align="center">
-  <img alt="letmeAskt" src=".github/letmeask.png" width="100%">
+  <img alt="letmeAskt" src=".github/HomeLetmeas.png" width="100%">
 </p>
 
 ## ✨ Tecnologias
